@@ -5,6 +5,7 @@ description: ${project.description}
 api-version: 1.13
 author: teunjojo
 website: ${project.url}
+folia-supported: true
 commands:
   simpleautorestart:
     description: Main SimpleAutoRestart command

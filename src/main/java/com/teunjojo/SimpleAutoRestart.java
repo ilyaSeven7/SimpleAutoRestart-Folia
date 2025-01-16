@@ -33,14 +33,6 @@ public final class SimpleAutoRestart extends JavaPlugin {
         int pluginId = 17760;
         new Metrics(this, pluginId);
 
-        // Check for updates
-        new UpdateChecker(this).getVersion((version) -> {
-            version = version.replaceFirst("v", "");
-            if (!this.getDescription().getVersion().equals(version)) {
-                getLogger().warning("A new version of SimpleAutoRestart is available: v" + version + " (Current version: v" + this.getDescription().getVersion() + ")");
-            }
-        });
-
         // Register SimpleAutoRestart commands
         this.getCommand("autorestart").setExecutor(new CommandMain(plugin));
         this.getCommand("simpleautorestart").setExecutor(new CommandMain(plugin));

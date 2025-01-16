@@ -79,14 +79,11 @@ public class RestartScheduler {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Bukkit.getScheduler().runTask(plugin, new Runnable() {
-                    @Override
-                    public void run() {
-                        if (!RestartScheduler.this.isRestartCanceled())
-                            _commands.forEach(command -> {
-                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
-                            });
-                    }
+                Bukkit.getGlobalRegionScheduler().run(plugin, scheduledTask ->  {
+                    if (!RestartScheduler.this.isRestartCanceled())
+                        _commands.forEach(command -> {
+                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
+                        });
                 });
             }
         }, initialDelayInSeconds * 1000);
